@@ -106,7 +106,21 @@ Vedi `politost-smartbook/src/content/esempio/` — libro dimostrativo integrato 
 
 ## 4. Capitoli
 
-File: `chapters/*.md`. Sintassi **Markdown esteso** con blocchi `:::`. Parser: `politost-smartbook/src/lib/parser.ts`.
+File: `chapters/*.md`. Sintassi **Markdown esteso** con blocchi `:::`. Parser: `parseChapterMarkdown` in `packages/content-core/src/parser.ts`.
+
+Il file può aprire con frontmatter YAML (`chapter`, `title`). Il parser lo toglie e poi legge i paragrafi.
+
+```markdown
+---
+chapter: 1
+title: Benvenuto
+---
+```
+
+| Campo | Descrizione |
+|-------|-------------|
+| `chapter` | Numero del capitolo, allineato a `chapters[].number` |
+| `title` | Titolo del capitolo |
 
 ### Paragrafi (obbligatori)
 
@@ -303,7 +317,7 @@ Per limiti del viewer (upload, DRM, stampa): [reader.md](reader.md).
 
 ## 12. Print CSS contract (appendix)
 
-Anteprima stampa (`@politost/print-engine`) impagina contenuto in un iframe isolato con Paged.js.
+Anteprima stampa (`politost-smartbook/src/print/`) impagina contenuto in un iframe isolato con Paged.js.
 
 ### Stylesheet stack (iframe)
 
